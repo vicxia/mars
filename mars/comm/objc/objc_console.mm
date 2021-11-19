@@ -27,6 +27,7 @@ void ConsoleLog(const XLoggerInfo* _info, const char* _log)
     
     static const char* levelStrings[] = {
         "V",
+        "C",
         "D",  // debug
         "I",  // info
         "W",  // warn
@@ -37,10 +38,7 @@ void ConsoleLog(const XLoggerInfo* _info, const char* _log)
     const char* strFuncName  = NULL == _info->func_name ? "" : _info->func_name;
     const char* file_name = ExtractFileName(_info->filename);
     
-    char log[16 * 1024] = {0};
-    snprintf(log, sizeof(log), "[%s][%s][%s:%d, %s][%s", levelStrings[_info->level], NULL == _info->tag ? "" : _info->tag, file_name, _info->line, strFuncName, _log);
-    
-    NSLog(@"%@", [NSString stringWithUTF8String:log]);
+    printf("[%s][%s][%s:%d, %s][%s\n", levelStrings[_info->level], NULL == _info->tag ? "" : _info->tag, file_name, _info->line, strFuncName, _log);
 }
 
 }//xlog

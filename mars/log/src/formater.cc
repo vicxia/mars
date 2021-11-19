@@ -42,6 +42,7 @@ namespace xlog {
 void log_formater(const XLoggerInfo* _info, const char* _logbody, PtrBuffer& _log) {
     static const char* levelStrings[] = {
         "V",
+        "C",
         "D",  // debug
         "I",  // info
         "W",  // warn
@@ -71,6 +72,7 @@ void log_formater(const XLoggerInfo* _info, const char* _logbody, PtrBuffer& _lo
         return;
     }
 
+    /*
     if (NULL != _info) {
         const char* filename = ExtractFileName(_info->filename);
 
@@ -112,7 +114,7 @@ void log_formater(const XLoggerInfo* _info, const char* _logbody, PtrBuffer& _lo
 
         assert((unsigned int)_log.Pos() == _log.Length());
     }
-
+    */
     if (NULL != _logbody) {
         // in android 64bit, in strnlen memchr,  const unsigned char*  end = p + n;  > 4G!!!!! in stack array
 

@@ -150,6 +150,7 @@ void XloggerAppender::Write(const XLoggerInfo* _info, const char* _log) {
 #endif
 
     if (2 <= (int)recursion.Get() && nullptr == s_recursion_str.get()) {
+        return;
         if ((int)recursion.Get() > 10) return;
         char* strrecursion = (char*)calloc(16 * 1024, 1);
         s_recursion_str.set((void*)(strrecursion));

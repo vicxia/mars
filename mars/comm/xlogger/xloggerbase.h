@@ -31,6 +31,7 @@ extern "C" {
 typedef enum {
     kLevelAll = 0,
     kLevelVerbose = 0,
+    kLevelConsole = 1,
     kLevelDebug,    // Detailed information on the flow through the system.
     kLevelInfo,     // Interesting runtime events (startup/shutdown), should be conservative and keep to a minimum.
     kLevelWarn,     // Other runtime situations that are undesirable or unexpected, but not necessarily "wrong".
@@ -45,6 +46,7 @@ typedef struct XLoggerInfo_t {
     const char* filename;
     const char* func_name;
     int line;
+    int skipFormat;
 
     struct timeval timeval;
     intmax_t pid;
